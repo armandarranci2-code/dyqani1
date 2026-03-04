@@ -349,8 +349,8 @@
         /* HERO */
         #hero {
             min-height: 100vh;
-            display: grid;
-            grid-template-columns: 50% 50%;
+            display: flex;
+            align-items: center;
             padding-top: 70px;
             overflow: hidden;
             background: var(--cream)
@@ -360,9 +360,10 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding: 7% 6% 7% 8%;
+            padding: 7% 8%;
             animation: fadeUp .9s ease .4s both;
-            z-index: 1
+            z-index: 1;
+            max-width: 700px
         }
 
         @keyframes fadeUp {
@@ -503,142 +504,6 @@
             color: var(--warm)
         }
 
-        .hero-right {
-            position: relative;
-            overflow: hidden;
-            background: var(--deep)
-        }
-
-        .hero-mosaic {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            grid-template-rows: 60% 40%;
-            height: 100%;
-            gap: 3px
-        }
-
-        .mosaic-cell {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: flex-end;
-            padding-bottom: 1.6rem;
-            font-size: 5.5rem;
-            cursor: pointer;
-            position: relative;
-            overflow: hidden;
-            background: var(--deep)
-        }
-
-        /* foto background */
-        .mosaic-cell-bg {
-            position: absolute;
-            inset: 0;
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            display: block;
-            transition: transform .7s cubic-bezier(.25,.46,.45,.94), opacity .4s;
-            opacity: .75
-        }
-
-        /* overlay e errët mbi foto */
-        .mosaic-cell::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(to top, rgba(28,20,16,.85) 0%, rgba(28,20,16,.25) 50%, rgba(28,20,16,.1) 100%);
-            transition: background .4s;
-            z-index: 1
-        }
-
-        .mosaic-cell:hover::after {
-            background: linear-gradient(to top, rgba(184,149,90,.55) 0%, rgba(28,20,16,.15) 60%, transparent 100%)
-        }
-
-        .mosaic-cell:hover .mosaic-cell-bg {
-            transform: scale(1.07);
-            opacity: .9
-        }
-
-        /* ikona dhe label mbi foto */
-        .mosaic-cell > span:first-of-type {
-            position: relative;
-            z-index: 2;
-            color: rgba(255,255,255,.9);
-            font-size: 2.8rem;
-            margin-bottom: .5rem;
-            transition: transform .4s, color .3s;
-            text-shadow: 0 2px 12px rgba(0,0,0,.4)
-        }
-
-        .mosaic-cell:hover > span:first-of-type {
-            transform: scale(1.15) translateY(-4px);
-            color: var(--gold)
-        }
-
-        /* qeliza e parë — e madhe, span 2 rreshta */
-        .mosaic-cell:first-child {
-            grid-row: span 2;
-            padding-bottom: 2.2rem
-        }
-
-        .mosaic-cell:first-child > span:first-of-type {
-            font-size: 3.8rem
-        }
-
-        .mosaic-label {
-            position: relative;
-            z-index: 2;
-            font-size: .62rem;
-            letter-spacing: .22em;
-            text-transform: uppercase;
-            color: rgba(255,255,255,.65);
-            transition: color .3s, transform .3s;
-            text-shadow: 0 1px 6px rgba(0,0,0,.5)
-        }
-
-        .mosaic-cell:hover .mosaic-label {
-            color: #fff;
-            transform: translateY(-2px)
-        }
-
-        .hero-badge-float {
-            position: absolute;
-            bottom: 12%;
-            right: 8%;
-            background: var(--gold);
-            color: var(--deep);
-            padding: 14px 18px;
-            text-align: center;
-            animation: float 4s ease-in-out infinite
-        }
-
-        @keyframes float {
-
-            0%,
-            100% {
-                transform: translateY(0)
-            }
-
-            50% {
-                transform: translateY(-12px)
-            }
-        }
-
-        .float-num {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: 1.6rem;
-            font-weight: 600;
-            line-height: 1
-        }
-
-        .float-txt {
-            font-size: .6rem;
-            letter-spacing: .12em;
-            text-transform: uppercase;
-            font-weight: 500
-        }
 
         /* MARQUEE */
         .marquee-wrap {
@@ -2224,9 +2089,6 @@
                 grid-template-columns: 1fr
             }
 
-            .hero-right {
-                display: none
-            }
 
             .hero-left {
                 padding: 8% 5%
@@ -2303,7 +2165,6 @@
         }
 
         .p-emoji i,
-        .mosaic-cell i,
         .cat-bg i,
         .ban-img i,
         #m-emoji i,
@@ -2397,30 +2258,6 @@
                 <div class="h-badge"><span class="h-badge-num">8k+</span><span class="h-badge-txt">Klientë</span></div>
                 <div class="h-badge"><span class="h-badge-num">4.9★</span><span class="h-badge-txt">Vlerësim</span>
                 </div>
-            </div>
-        </div>
-        <div class="hero-right">
-            <div class="hero-mosaic">
-                <div class="mosaic-cell" data-cat="canta-femra" onclick="fp('canta-femra',null);sg('products')">
-                    <img class="mosaic-cell-bg" id="bg-canta-femra" src="" alt="Çanta Femra">
-                    <span><i class="fas fa-shopping-bag"></i></span><span class="mosaic-label">Çanta Femra</span>
-                </div>
-                <div class="mosaic-cell" data-cat="portofole" onclick="fp('portofole',null);sg('products')">
-                    <img class="mosaic-cell-bg" id="bg-portofole" src="" alt="Portofole">
-                    <span><i class="fas fa-wallet"></i></span><span class="mosaic-label">Portofole</span>
-                </div>
-                <div class="mosaic-cell" data-cat="canta-meshkuj" onclick="fp('canta-meshkuj',null);sg('products')">
-                    <img class="mosaic-cell-bg" id="bg-canta-meshkuj" src="" alt="Çanta Meshkuj">
-                    <span><i class="fas fa-briefcase"></i></span><span class="mosaic-label">Çanta Meshkuj</span>
-                </div>
-                <div class="mosaic-cell" data-cat="bizhuteri" onclick="fp('bizhuteri',null);sg('products')">
-                    <img class="mosaic-cell-bg" id="bg-bizhuteri" src="" alt="Bizhuteri">
-                    <span><i class="fas fa-gem"></i></span><span class="mosaic-label">Bizhuteri</span>
-                </div>
-            </div>
-            <div class="hero-badge-float">
-                <div class="float-num">FREE</div>
-                <div class="float-txt">Shipping<br>3000+ Lekë</div>
             </div>
         </div>
     </section>
@@ -2920,15 +2757,6 @@
             ['canta-femra', 'canta-meshkuj', 'portofole', 'bizhuteri'].forEach(cat => {
                 const catProds = products.filter(p => p.cat === cat);
                 const prod = catProds.find(p => p.image);
-
-                // --- mosaic hero ---
-                const mEl = document.getElementById('bg-' + cat);
-                if (mEl && prod) {
-                    mEl.src = prod.image + '?w=600&fm=webp&q=75';
-                    mEl.style.opacity = '';
-                } else if (mEl) {
-                    mEl.style.opacity = '0';
-                }
 
                 // --- category section cards ---
                 const cEl = document.getElementById('cat-photo-' + cat);
