@@ -1073,103 +1073,6 @@
         }
 
         /* BANNER */
-        #banner {
-            background: var(--cream);
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            align-items: center;
-            gap: 0;
-            padding: 0;
-            min-height: 55vh;
-            overflow: hidden
-        }
-
-        .ban-img {
-            background: var(--deep);
-            height: 100%;
-            min-height: 55vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 10rem;
-            position: relative;
-            overflow: hidden
-        }
-
-        .ban-img::after {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(135deg, rgba(184, 149, 90, .08) 0%, transparent 60%)
-        }
-
-        .ban-spin {
-            position: absolute;
-            top: 12%;
-            right: 12%;
-            width: 88px;
-            height: 88px;
-            border-radius: 50%;
-            background: var(--gold);
-            color: var(--deep);
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            font-weight: 700;
-            font-size: 1.15rem;
-            line-height: 1.1;
-            animation: spin-slow 9s linear infinite;
-            flex-shrink: 0
-        }
-
-        @keyframes spin-slow {
-            to {
-                transform: rotate(360deg)
-            }
-        }
-
-        .ban-spin small {
-            font-size: .52rem;
-            letter-spacing: .06em;
-            text-transform: uppercase
-        }
-
-        .ban-cnt {
-            padding: 7% 8%
-        }
-
-        .ban-sup {
-            font-size: .68rem;
-            letter-spacing: .25em;
-            text-transform: uppercase;
-            color: var(--gold);
-            margin-bottom: 1rem;
-            display: block
-        }
-
-        .ban-title {
-            font-family: 'Cormorant Garamond', serif;
-            font-size: clamp(2.2rem, 4vw, 3.8rem);
-            font-weight: 300;
-            line-height: 1.1;
-            margin-bottom: 1.4rem;
-            color: var(--dark)
-        }
-
-        .ban-title b {
-            color: var(--gold);
-            font-weight: 400
-        }
-
-        .ban-txt {
-            font-size: .88rem;
-            line-height: 1.85;
-            color: var(--warm);
-            margin-bottom: 2rem;
-            max-width: 380px
-        }
-
         /* REVIEWS */
         #reviews {
             background: var(--light)
@@ -2094,18 +1997,6 @@
                 padding: 8% 5%
             }
 
-            #banner {
-                grid-template-columns: 1fr
-            }
-
-            .ban-img {
-                display: none
-            }
-
-            .ban-cnt {
-                padding: 10% 5%
-            }
-
             .cat-grid {
                 grid-template-columns: 1fr
             }
@@ -2166,7 +2057,6 @@
 
         .p-emoji i,
         .cat-bg i,
-        .ban-img i,
         #m-emoji i,
         .c-item-img i {
             font-size: inherit;
@@ -2342,7 +2232,7 @@
                 Meshkuj</button>
             <button class="f-btn" onclick="fp('portofole',this)"><i class="fas fa-wallet"></i> Portofole</button>
             <button class="f-btn" onclick="fp('bizhuteri',this)"><i class="fas fa-gem"></i> Bizhuteri</button>
-            <button class="f-btn" onclick="fp('sale',this)"><i class="fas fa-fire"></i> Sale</button>
+
         </div>
         <div class="sort-row">
             <span class="res-count" id="res-count">Duke shfaqur produkte</span>
@@ -2380,22 +2270,6 @@
     </section>
 
     <!-- BANNER -->
-    <section id="banner">
-        <div class="ban-img">
-            <div class="ban-spin">40%<br><small>ZBRITJE</small></div>
-            <i class="fas fa-gem"></i>
-        </div>
-        <div class="ban-cnt">
-            <span class="ban-sup"><i class="fas fa-diamond" style="font-size: 0.7em;"></i> Ofertë e Kufizuar</span>
-            <h2 class="ban-title">Bizhuteri<br><b>Fisnike</b><br>me çmim special</h2>
-            <p class="ban-txt">Koleksioni ynë i bizhurerisë argjend dhe ar — tani me zbritje deri 40%. Oferta vlen vetëm
-                këtë javë!</p>
-            <div class="hero-btns">
-                <button class="btn-dark" onclick="fp('bizhuteri',null);sg('products')">Shiko Ofertat</button>
-            </div>
-        </div>
-    </section>
-
     <!-- REVIEWS -->
     <section id="reviews">
         <div class="sec-head"><span class="sec-sup"><i class="fas fa-diamond" style="font-size: 0.7em;"></i> Klientët
@@ -2477,7 +2351,7 @@
                     <li><a onclick="fp('canta-meshkuj',null);sg('products')">Çanta Meshkuj</a></li>
                     <li><a onclick="fp('portofole',null);sg('products')">Portofole</a></li>
                     <li><a onclick="fp('bizhuteri',null);sg('products')">Bizhuteri</a></li>
-                    <li><a onclick="fp('sale',null);sg('products')">Sale & Oferta</a></li>
+
                 </ul>
             </div>
             <div>
