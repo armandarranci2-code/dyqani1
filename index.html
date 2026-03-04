@@ -92,8 +92,11 @@
             font-family: 'Cormorant Garamond', serif;
             font-size: 2.5rem;
             color: var(--gold);
-            letter-spacing: .4em;
-            font-weight: 300
+            letter-spacing: .2em;
+            font-weight: 300;
+            text-align: center;
+            padding: 0 1rem;
+            width: 100%
         }
 
         /* NOTIFICATION */
@@ -739,19 +742,37 @@
             filter: drop-shadow(0 20px 40px rgba(0, 0, 0, .4))
         }
 
-        .cat-card:hover .cat-bg {
-            transform: scale(1.12)
+        /* foto reale nga Contentful */
+        .cat-bg-photo {
+            position: absolute;
+            inset: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+            transition: transform .7s cubic-bezier(.25, .46, .45, .94);
+            opacity: 1
+        }
+
+        .cat-card:hover .cat-bg-photo {
+            transform: scale(1.1)
+        }
+
+        /* kur ka foto, fshih ikonën */
+        .cat-card.has-photo .cat-bg {
+            opacity: 0
         }
 
         .cat-veil {
             position: absolute;
             inset: 0;
-            background: linear-gradient(160deg, rgba(28, 20, 16, .15) 0%, rgba(28, 20, 16, .7) 100%);
-            transition: background .4s
+            background: linear-gradient(170deg, rgba(28,20,16,.05) 0%, rgba(28,20,16,.45) 45%, rgba(28,20,16,.82) 100%);
+            transition: background .5s;
+            z-index: 1
         }
 
         .cat-card:hover .cat-veil {
-            background: linear-gradient(160deg, rgba(28, 20, 16, .2) 0%, rgba(28, 20, 16, .85) 100%)
+            background: linear-gradient(170deg, rgba(28,20,16,.1) 0%, rgba(28,20,16,.5) 45%, rgba(28,20,16,.9) 100%)
         }
 
         .cat-info {
@@ -761,7 +782,8 @@
             right: 0;
             padding: 32px 30px;
             transform: translateY(40px);
-            transition: transform .4s cubic-bezier(.25, .46, .45, .94)
+            transition: transform .4s cubic-bezier(.25, .46, .45, .94);
+            z-index: 2
         }
 
         .cat-card:hover .cat-info {
@@ -2422,44 +2444,48 @@
             <h2 class="sec-title">Gjeni stilin tuaj</h2>
         </div>
         <div class="cat-grid">
-            <div class="cat-card" onclick="fp('canta-femra',null);sg('products')">
+            <div class="cat-card" data-cat="canta-femra" onclick="fp('canta-femra',null);sg('products')">
+                <img class="cat-bg-photo" id="cat-photo-canta-femra" src="" alt="Çanta Femra" style="opacity:0">
                 <div class="cat-bg"><i class="fas fa-shopping-bag"></i></div>
                 <div class="cat-veil"></div>
                 <div class="cat-info">
                     <div class="cat-tag">Eksklusiv</div>
                     <div class="cat-name">Çanta Femra</div>
-                    <div class="cat-cnt">68 modele</div><button class="cat-arrow">Shiko <i
-                            class="fas fa-arrow-right"></i></button>
+                    <div class="cat-cnt" id="cat-cnt-canta-femra">68 modele</div>
+                    <button class="cat-arrow">Shiko <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
-            <div class="cat-card" onclick="fp('canta-meshkuj',null);sg('products')">
+            <div class="cat-card" data-cat="canta-meshkuj" onclick="fp('canta-meshkuj',null);sg('products')">
+                <img class="cat-bg-photo" id="cat-photo-canta-meshkuj" src="" alt="Çanta Meshkuj" style="opacity:0">
                 <div class="cat-bg"><i class="fas fa-briefcase"></i></div>
                 <div class="cat-veil"></div>
                 <div class="cat-info">
                     <div class="cat-tag">Premium</div>
                     <div class="cat-name">Çanta Meshkuj</div>
-                    <div class="cat-cnt">45 modele</div><button class="cat-arrow">Shiko <i
-                            class="fas fa-arrow-right"></i></button>
+                    <div class="cat-cnt" id="cat-cnt-canta-meshkuj">45 modele</div>
+                    <button class="cat-arrow">Shiko <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
-            <div class="cat-card" onclick="fp('portofole',null);sg('products')">
+            <div class="cat-card" data-cat="portofole" onclick="fp('portofole',null);sg('products')">
+                <img class="cat-bg-photo" id="cat-photo-portofole" src="" alt="Portofole" style="opacity:0">
                 <div class="cat-bg"><i class="fas fa-wallet"></i></div>
                 <div class="cat-veil"></div>
                 <div class="cat-info">
                     <div class="cat-tag">Klasike</div>
                     <div class="cat-name">Portofole</div>
-                    <div class="cat-cnt">52 modele</div><button class="cat-arrow">Shiko <i
-                            class="fas fa-arrow-right"></i></button>
+                    <div class="cat-cnt" id="cat-cnt-portofole">52 modele</div>
+                    <button class="cat-arrow">Shiko <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
-            <div class="cat-card" onclick="fp('bizhuteri',null);sg('products')">
+            <div class="cat-card" data-cat="bizhuteri" onclick="fp('bizhuteri',null);sg('products')">
+                <img class="cat-bg-photo" id="cat-photo-bizhuteri" src="" alt="Bizhuteri" style="opacity:0">
                 <div class="cat-bg"><i class="fas fa-gem"></i></div>
                 <div class="cat-veil"></div>
                 <div class="cat-info">
                     <div class="cat-tag">Fisnike</div>
                     <div class="cat-name">Bizhuteri</div>
-                    <div class="cat-cnt">87 modele</div><button class="cat-arrow">Shiko <i
-                            class="fas fa-arrow-right"></i></button>
+                    <div class="cat-cnt" id="cat-cnt-bizhuteri">87 modele</div>
+                    <button class="cat-arrow">Shiko <i class="fas fa-arrow-right"></i></button>
                 </div>
             </div>
         </div>
@@ -2889,16 +2915,34 @@
             return list;
         }
 
-        // Vendos foton e parë të çdo kategorie si background i mosaic cell
+        // Vendos foton e parë të çdo kategorie si background i mosaic cell dhe cat-card
         function updateMosaicBgs() {
             ['canta-femra', 'canta-meshkuj', 'portofole', 'bizhuteri'].forEach(cat => {
-                const prod = products.find(p => p.cat === cat && p.image);
-                const el = document.getElementById('bg-' + cat);
-                if (el && prod && prod.image) {
-                    el.src = prod.image + '?w=600&fm=webp&q=75';
-                    el.style.opacity = '';
-                } else if (el) {
-                    el.style.opacity = '0'; // fshih nëse nuk ka foto
+                const catProds = products.filter(p => p.cat === cat);
+                const prod = catProds.find(p => p.image);
+
+                // --- mosaic hero ---
+                const mEl = document.getElementById('bg-' + cat);
+                if (mEl && prod) {
+                    mEl.src = prod.image + '?w=600&fm=webp&q=75';
+                    mEl.style.opacity = '';
+                } else if (mEl) {
+                    mEl.style.opacity = '0';
+                }
+
+                // --- category section cards ---
+                const cEl = document.getElementById('cat-photo-' + cat);
+                if (cEl && prod) {
+                    cEl.src = prod.image + '?w=900&fm=webp&q=80';
+                    cEl.style.opacity = '1';
+                    cEl.style.transition = 'opacity .6s ease, transform .7s cubic-bezier(.25,.46,.45,.94)';
+                    cEl.closest('.cat-card').classList.add('has-photo');
+                }
+
+                // --- numri real i produkteve ---
+                const cntEl = document.getElementById('cat-cnt-' + cat);
+                if (cntEl && catProds.length > 0) {
+                    cntEl.textContent = catProds.length + ' modele';
                 }
             });
         }
