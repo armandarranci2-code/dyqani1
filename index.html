@@ -207,6 +207,10 @@
             color: var(--cream)
         }
 
+        nav.scrolled .hamburger span {
+            background: var(--cream)
+        }
+
         .nav-logo {
             font-family: 'Cormorant Garamond', serif;
             font-size: 1.9rem;
@@ -1178,7 +1182,8 @@
         .feat-icon {
             font-size: 2rem;
             margin-bottom: .9rem;
-            display: block
+            display: block;
+            color: #ffffff
         }
 
         .feat-title {
@@ -3055,8 +3060,19 @@
 
         function toggleMobile() {
             const nl = document.querySelector('.nav-links');
-            const vis = nl.style.display === 'flex';
-            nl.style.cssText = vis ? 'display:none' : 'display:flex;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:var(--light);padding:20px 5%;box-shadow:0 10px 30px rgba(0,0,0,.08);z-index:999';
+            const nav = document.getElementById('navbar');
+            const isScrolled = nav.classList.contains('scrolled');
+            const vis = nl.classList.contains('mob-open');
+            if (vis) {
+                nl.classList.remove('mob-open');
+                nl.style.cssText = 'display:none';
+            } else {
+                nl.classList.add('mob-open');
+                const bg = isScrolled ? 'rgba(28,20,16,.97)' : 'var(--light)';
+                const clr = isScrolled ? 'var(--cream)' : 'var(--dark)';
+                nl.style.cssText = `display:flex;flex-direction:column;position:absolute;top:70px;left:0;right:0;background:${bg};padding:20px 5%;box-shadow:0 10px 30px rgba(0,0,0,.15);z-index:999;gap:1.2rem`;
+                nl.querySelectorAll('a').forEach(a => a.style.color = clr);
+            }
         }
     </script>
 </body>
